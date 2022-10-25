@@ -17,8 +17,8 @@
 ## Quickstart
 
 ```
-git clone https://github.com/PatrickAlphaC/hardhat-smartcontract-lottery-fcc
-cd hardhat-smartcontract-lottery-fcc
+git clone https://github.com/Aboudoc/hardhat-raffle-fcc
+cd FCC-lotteryHH--2210
 yarn
 ```
 
