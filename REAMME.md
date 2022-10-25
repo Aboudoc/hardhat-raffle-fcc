@@ -18,7 +18,7 @@
 
 ```
 git clone https://github.com/Aboudoc/hardhat-raffle-fcc
-cd FCC-lotteryHH--2210
+cd FCC-lotteryHH-2210
 yarn
 ```
 
