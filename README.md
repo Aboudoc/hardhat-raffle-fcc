@@ -2,6 +2,12 @@
 
 # Getting Started
 
+-   Install dependencies:
+
+```
+yarn add --dev @nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers ethers @nomiclabs/hardhat-etherscan @nomiclabs/hardhat-waffle chai ethereum-waffle hardhat hardhat-contract-sizer hardhat-deploy hardhat-gas-reporter prettier prettier-plugin-solidity solhint solidity-coverage dotenv
+```
+
 ## Requirements
 
 -   [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
