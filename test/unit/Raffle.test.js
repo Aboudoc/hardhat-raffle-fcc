@@ -5,7 +5,14 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
 !developmentChains.includes(network.name)
     ? describe.skip
     : describe("Raffle Unit Tests", function () {
-          let raffle, vrfCoordinatorV2Mock, raffleEntranceFee, deployer, interval
+          let raffle,
+              vrfCoordinatorV2Mock,
+              raffleEntranceFee,
+              deployer,
+              interval,
+              callbackGasLimit,
+              subscriptionId,
+              gasLane
           const chainId = network.config.chainId
 
           beforeEach(async function () {
@@ -15,6 +22,9 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
               vrfCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock", deployer)
               raffleEntranceFee = await raffle.getEntranceFee()
               interval = await raffle.getInterval()
+              callbackGasLimit = await raffle.getCallbackGasLimit()
+              subscriptionId = await raffle.getSubscriptionId()
+              gasLane = await raffle.getGasLane()
           })
 
           describe("constructor", function () {
@@ -24,6 +34,19 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
                   assert.equal(raffleState.toString(), "0")
                   assert.equal(interval.toString(), networkConfig[chainId]["interval"])
               })
+              // Additional parameters (optional for the purpose)
+              it("sets the callbackGasLimit correctly", async function () {
+                  assert.equal(
+                      callbackGasLimit.toString(),
+                      networkConfig[chainId]["callbackGasLimit"]
+                  )
+              })
+              it("sets the gasLane correctly", async function () {
+                  assert.equal(gasLane.toString(), networkConfig[chainId]["gasLane"])
+              })
+              //   it("sets the subscriptionID correctly", async function () {
+              //       assert.equal(subscriptionId.toString(), networkConfig[chainId]["subscriptionId"])
+              //   })
           })
 
           describe("enterRaffle", function () {
