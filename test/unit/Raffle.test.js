@@ -29,7 +29,6 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
 
           describe("constructor", function () {
               it("initializes the raffle correctly", async function () {
-                  // Ideally we make our tests have just 1 assert per "it"
                   const raffleState = await raffle.getRaffleState()
                   assert.equal(raffleState.toString(), "0")
                   assert.equal(interval.toString(), networkConfig[chainId]["interval"])
@@ -44,9 +43,6 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
               it("sets the gasLane correctly", async function () {
                   assert.equal(gasLane.toString(), networkConfig[chainId]["gasLane"])
               })
-              //   it("sets the subscriptionID correctly", async function () {
-              //       assert.equal(subscriptionId.toString(), networkConfig[chainId]["subscriptionId"])
-              //   })
           })
 
           describe("enterRaffle", function () {
@@ -171,11 +167,6 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
                           try {
                               const recentWinner = await raffle.getRecentWinner()
                               console.log(recentWinner)
-                              console.log(accounts[2].address)
-                              console.log(accounts[0].address)
-                              console.log(accounts[1].address)
-                              console.log(accounts[3].address)
-
                               const raffleState = await raffle.getRaffleState()
                               const endingTimeStamp = await raffle.getLatestTimeStamp()
                               const numPlayers = await raffle.getNumberOfPlayers()
