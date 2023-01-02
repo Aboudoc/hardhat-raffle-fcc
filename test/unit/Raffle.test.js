@@ -34,6 +34,13 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
                   assert.equal(interval.toString(), networkConfig[chainId]["interval"])
               })
               // Additional parameters (optional for the purpose)
+              it("sets the entranceFee", async function () {
+                  const response = await raffle.getEntranceFee()
+                  assert.equal(
+                      response.toString(),
+                      networkConfig[chainId]["entranceFee"].toString()
+                  )
+              })
               it("sets the callbackGasLimit correctly", async function () {
                   assert.equal(
                       callbackGasLimit.toString(),
